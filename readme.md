@@ -49,7 +49,7 @@ az webapp create --name $APP_NAME --resource-group $RESOURCE_GROUP --plan $PLAN_
 ```
 
 ## Custom Domain & DNS Setup
-If you're setting up a custom domain like **chemmara.space**, configure the following DNS records:
+If you're setting up a custom domain like **XXXXXXXXXX**, configure the following DNS records:
 - **CNAME Record**: Points to the Azure Web App's default domain.
 - **TXT Record**: Used for domain verification.
 - **NS Record**: If you're migrating domain hosting.
