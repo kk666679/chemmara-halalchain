@@ -1,17 +1,12 @@
-using FrontEnd.Data;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
-
-builder.Services.AddHttpClient<WeatherForecastClient>(c =>
-{
-    var url = builder.Configuration["WEATHER_URL"] 
-        ?? throw new InvalidOperationException("WEATHER_URL is not set");
-
-    c.BaseAddress = new(url);
-});
 
 var app = builder.Build();
 
@@ -21,9 +16,14 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+app.Run();
+
+
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
+
 app.MapBlazorHub();
 app.MapFallbackToPage("/_Host");
+
 app.Run();
